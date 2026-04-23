@@ -4,9 +4,14 @@
 
 ## 1. Overview
 
-The To-Be process describes the digital handling of customer requests for materials that are not available in the webshop, including the subsequent procurement and supplier selection process.
+This project focuses on automating and digitalising the Source‑to‑Order process using a practical, real‑world example. We take an office supplies company with an e‑commerce platform where customers can place orders in self‑service. In our case study, a customer wants to go green and is looking for an eco‑friendly paper product that is not currently available in the catalog and needs to be sourced.
 
-The process integrates CRM data management, automated decision-making, and human validation steps to ensure efficiency, transparency, and scalability.
+## 1.1 Current Process
+In the current setup, sourcing requests are handled manually. The process is triggered when a customer contacts the sales team directly via phone calls or emails. This approach can lead to missed opportunities if calls are not answered, emails are replied to too late, or requests get lost. As a result, response times can be slow and the overall customer experience inconsistent.
+
+## 1.2 Automated Process (Case Study)
+In the automated scenario, the customer uses the e‑commerce platform to request the eco‑friendly paper. By clicking a dedicated button, the customer is redirected to a sourcing request form where all necessary information is collected.
+Once the form is submitted, the request is automatically created in the CRM system as a new sourcing request and assigned to a sales representative. This automation ensures that requests are captured reliably, handled faster, and seamlessly integrated into the Source‑to‑Order process.
 
 ---
 
