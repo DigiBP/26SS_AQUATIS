@@ -1,0 +1,103 @@
+# Process Automation Methodology
+ 
+> **Project:** Digitalised Supplier Selection – DigiBP SS2026  
+> **Team:** Aquatis  
+> **University:** FHNW – MSc Business Information Systems  
+> **Last updated:** 2026-04-23
+ 
+---
+ 
+## Overview
+ 
+This project follows a process-driven automation methodology designed to digitalise the **Source-to-Order process** using low-code tools, APIs, and workflow orchestration. The methodology is practical and implementation-focused, guiding the project from process analysis to end-to-end testing.
+ 
+---
+ 
+## Table of Contents
+ 
+1. [AS-IS Process Analysis](#1-as-is-process-analysis)
+2. [TO-BE Process Design](#2-to-be-process-design)
+3. [Process Modelling with BPMN](#3-process-modelling-with-bpmn)
+4. [Data Collection and Stakeholder Interaction](#4-data-collection-and-stakeholder-interaction)
+5. [Integration and Automation](#5-integration-and-automation)
+6. [System Simulation (CRM & ERP)](#6-system-simulation-crm--erp)
+7. [Workflow Execution and Monitoring](#7-workflow-execution-and-monitoring)
+8. [End-to-End Testing and Validation](#8-end-to-end-testing-and-validation)
+---
+ 
+## 1. AS-IS Process Analysis
+ 
+The first step is to understand the current Source-to-Order process. The existing workflow is analysed to identify how sourcing requests are initiated, processed, and handled by sales, procurement, and master data. Key issues such as manual handovers, missing information, and the risk of missed opportunities are identified.
+ 
+> 📄 See [`as_is_process.md`](as_is_process.md) for the full AS-IS process description.
+ 
+---
+ 
+## 2. TO-BE Process Design
+ 
+Based on the AS-IS analysis, a target (TO-BE) process is defined. The new process shifts the trigger from manual customer contact to a **structured, digital self-service request**. The redesigned flow ensures that:
+ 
+- All required information is captured upfront
+- Responsibilities are clearly assigned to each stakeholder
+> 📄 See [`to_be_process.md`](to_be_process.md) for the full TO-BE process description.
+ 
+---
+ 
+## 3. Process Modelling with BPMN
+ 
+The TO-BE process is modelled using **Camunda** and **BPMN** standards. This step defines:
+ 
+- Process flow and decision points
+- User tasks for Sales, Procurement, and Master Data
+- System interactions and process boundaries
+The model serves as the central reference for the automated workflow.
+ 
+> 📁 BPMN and DMN files are located in the [`bpmn/`](../bpmn/) folder.
+ 
+---
+ 
+## 4. Data Collection and Stakeholder Interaction
+ 
+**Google Forms** is used as the main entry point for customer sourcing requests. The form ensures standardized data collection and acts as the initial communication channel between the customer and internal stakeholders.
+ 
+---
+ 
+## 5. Integration and Automation
+ 
+**Make** is used to automate data movement and system integration through APIs. This includes:
+ 
+- Sending form data into the CRM
+- Triggering the Camunda process
+- Updating CRM and ERP data stores
+APIs are tested and validated using **Postman** before being integrated into the automated flow.
+ 
+> 📁 Make blueprints and integration configs are located in the [`integration/`](../integration/) folder.
+ 
+---
+ 
+## 6. System Simulation (CRM & ERP)
+ 
+To avoid dependency on real enterprise systems, **Google Sheets** are used to simulate CRM and ERP systems. These sheets act as a fake database containing:
+ 
+- Materials
+- Suppliers
+- Sourcing requests
+This enables realistic process execution and data handling without requiring live enterprise infrastructure.
+ 
+---
+ 
+## 7. Workflow Execution and Monitoring
+ 
+**Camunda Cockpit** is used to run, monitor, and manage process instances. User tasks are assigned, executed, and tracked, allowing validation of the workflow logic and stakeholder interactions.
+ 
+---
+ 
+## 8. End-to-End Testing and Validation
+ 
+The final step validates the complete Source-to-Order flow:
+ 
+1. Customer submits a request
+2. Data is processed via APIs
+3. Tasks are executed by stakeholders
+4. CRM and ERP records are updated
+This confirms that the automated process works as intended and delivers a more **reliable and efficient sourcing experience**.
