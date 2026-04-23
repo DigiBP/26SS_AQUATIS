@@ -1,8 +1,6 @@
 # 26SS_AQUATIS
 
-# To-Be Process Documentation
-
-## 1. Overview
+# 1. Overview
 
 This project focuses on automating and digitalising the Source‑to‑Order process using a practical, real‑world example. We take an office supplies company with an e‑commerce platform where customers can place orders in self‑service. In our case study, a customer wants to go green and is looking for an eco‑friendly paper product that is not currently available in the catalog and needs to be sourced.
 
@@ -15,7 +13,10 @@ Once the form is submitted, the request is automatically created in the CRM syst
 
 ---
 
-## 2. Process Start: Customer Request
+# 2. To-Be Process Documentation
+
+
+## 2.1 Process Start: Customer Request
 
 The process begins when a customer submits a material request via the **"Submit Request"** form.
 
