@@ -1,0 +1,219 @@
+# AS-IS Process: Supplier Selection
+
+> **Project:** Digitalised Supplier Selection – DigiBP SS2026  
+> **Team:** Aquatis  
+> **University:** FHNW – MSc Business Information Systems  
+> **Last updated:** 2026-04-23
+
+---
+
+## Table of Contents
+
+1. [Start Event](#1-start-event)
+2. [Assumptions](#2-assumptions)
+3. [Process Participants (Lanes)](#3-process-participants-lanes)
+4. [Detailed Process Flow](#4-detailed-process-flow)
+   - [4.1 Sales Lane – Customer Request Handling](#41-sales-lane--customer-request-handling)
+   - [4.2 Procurement Lane – Sourcing and Supplier Selection](#42-procurement-lane--sourcing-and-supplier-selection)
+   - [4.3 RFQ and Supplier Evaluation](#43-rfq-and-supplier-evaluation)
+   - [4.4 Contracting and Supplier Agreement](#44-contracting-and-supplier-agreement)
+   - [4.5 Supplier Master Data and Purchase Order](#45-supplier-master-data-and-purchase-order)
+   - [4.6 Master Data Lane – Supplier Creation](#46-master-data-lane--supplier-creation)
+   - [4.7 Procurement Lane – Ordering](#47-procurement-lane--ordering)
+5. [End Event](#5-end-event)
+6. [Key Automation and Improvement Opportunities](#6-key-automation-and-improvement-opportunities)
+
+---
+
+## 1. Start Event
+
+A customer submits a request for a new eco-friendly paper product via **email or phone call**.
+
+### Expected Outcome
+
+- A Purchase Order (PO) is created and sent
+- The supplier confirms the order
+- All related documents are archived
+- The supplier is fully created and active in the ERP system
+
+---
+
+## 2. Assumptions
+
+- CRM is used by Sales for request intake and tracking
+- ERP system is used for supplier master data and PO creation
+- Communication with external parties occurs primarily via email
+- Excel files are used as interim data exchange formats
+
+---
+
+## 3. Process Participants (Lanes)
+
+| Lane            | Responsibility                                                           |
+|-----------------|--------------------------------------------------------------------------|
+| **Sales**       | Customer interaction, request intake, catalogue check, and clarification |
+| **Procurement** | Sourcing, RFQ, supplier evaluation, contracting, PO creation             |
+| **Master Data** | Supplier master data creation in ERP                                     |
+| **Supplier**    | RFQ response, contract negotiation, order confirmation                   |
+
+---
+
+## 4. Detailed Process Flow
+
+### 4.1 Sales Lane – Customer Request Handling
+
+1. **Request for New Material** *(Start Event)*  
+   The process starts when Sales receives a customer request by email or phone.
+
+2. **Sales Reviews Email or Call**  
+   Sales evaluates the request and clarifies requirements with the client if needed.
+
+3. **Sales Records New Request in CRM**  
+   The request details are logged in the CRM system for traceability.
+
+4. **Sales Checks Material in Catalogue**  
+   Sales verifies whether the requested material already exists in the product catalogue.
+
+5. **Gateway: Is Material Available in Catalogue?**
+   - **Yes →** The process ends for this flow and continues in the standard sales process.
+   - **No →** Sales proposes an alternative existing product.
+
+6. **Gateway: Does the Client Agree to Proposed Alternative?**
+   - **Yes →** The process ends and continues in the standard sales process.
+   - **No →** Sales prepares a sourcing request for Procurement.
+
+7. **Prepare Request in CRM for Procurement**  
+   Sales compiles the sourcing requirements and exports them as an Excel file.
+
+8. **Send Request to Procurement via Email**  
+   - *Output:* Excel file containing requirements  
+   - *Input to Procurement:* Excel file
+
+---
+
+### 4.2 Procurement Lane – Sourcing and Supplier Selection
+
+1. **Receive Request** *(Message Catch Event)*  
+   Procurement receives the request email.
+
+2. **Acknowledge Receipt to Sales**  
+   Procurement sends an acknowledgement email.  
+   Sales receives the acknowledgement *(message catch event)*.
+
+3. **Log Request in Procurement List**  
+   The request is registered in Procurement's internal tracking list.  
+   - *Output:* Updated request list
+
+4. **Review Request for Completeness**  
+   Procurement verifies required technical, commercial, and sustainability information.
+
+5. **Gateway: Is Request Complete?**
+   - **No →** Procurement sends a request for missing information to Sales → Sales receives and provides the missing information → Procurement receives the completed data and continues.
+   - **Yes →** Proceed to feasibility check.
+
+6. **Feasibility Check**  
+   Procurement assesses sourcing feasibility.
+
+7. **Gateway: Can an Existing Supplier Fulfill the Request?**
+   - **Yes →** Process ends with sourcing through existing supplier.
+   - **No →** Proceed with new supplier sourcing.
+
+---
+
+### 4.3 RFQ and Supplier Evaluation
+
+1. **Create RFQ Contact List**  
+   Procurement identifies potential suppliers.  
+   - *Output:* RFQ supplier list
+
+2. **Send RFQ to All Suppliers**  
+   RFQs are issued via email.
+
+3. **Receive Quotations** *(Message Catch Event)*  
+   Suppliers submit quotations via email.  
+   - *Output:* Quotations
+
+4. **Download and Archive Quotations**  
+   Quotations are stored in the document archive.
+
+5. **Perform Quotation Completeness Check**
+
+6. **Gateway: Is Quotation Information Complete?**
+   - **No →** Procurement requests missing information from suppliers and receives updates.
+   - **Yes →** Proceed to evaluation.
+
+7. **Create Comparison Matrix**  
+   Quotations are compared based on price, sustainability, delivery, and risk.
+
+8. **Evaluate Supplier Score and Select Best Supplier**
+
+---
+
+### 4.4 Contracting and Supplier Agreement
+
+1. **Prepare Contracts Including T&Cs**  
+   - *Output:* Contract documents
+
+2. **Send Contracts to Suppliers**  
+   - *Input:* Contract documents
+
+3. **Receive Supplier Response** *(Message Catch Event)*
+
+4. **Gateway: Are T&Cs Accepted by Supplier?**
+   - **Yes →** Signed contracts are archived.
+   - **No →** Contracts are adapted.
+
+5. **Gateway: Are Revised T&Cs Accepted?**
+   - **No →** Supplier is rejected → loops back to *Evaluate Supplier Score and Select Best Supplier*.
+   - **Yes →** Continue process.
+
+6. **Archive Signed Contracts**  
+   Contracts are stored in archive.
+
+---
+
+### 4.5 Supplier Master Data and Purchase Order
+
+1. **Collect Supplier Master Data in Excel**  
+   - *Output:* Supplier master data Excel file
+
+2. **Send Vendor Creation Request to Master Data Team**
+
+---
+
+### 4.6 Master Data Lane – Supplier Creation
+
+1. Receive Vendor Creation Request
+2. Review Vendor Data
+3. Create Supplier in ERP System
+4. Inform Procurement of Vendor Creation
+
+---
+
+### 4.7 Procurement Lane – Ordering
+
+1. Receive Vendor Creation Confirmation
+2. Create Purchase Order in ERP
+3. Send PO to Supplier
+4. Receive Order Confirmation from Supplier
+5. Archive Purchase Order and Order Confirmation
+
+---
+
+## 5. End Event
+
+The process concludes once the **Purchase Order is confirmed by the supplier** and all related documents are archived.
+
+---
+
+## 6. Key Automation and Improvement Opportunities
+
+- Replace Excel-based data exchange with structured system workflows
+- Automate RFQ distribution and quotation comparison
+- Integrate supplier onboarding directly into ERP
+- Standardize contract templates and approval workflows
+- Enable end-to-end visibility across Sales and Procurement
+
+---
+
+> 📁 *This file is part of the `docs/` folder. See also: [`to_be_process.md`](to_be_process.md), [`decision_model.md`](decision_model.md), [`architecture.md`](architecture.md)*
