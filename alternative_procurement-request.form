@@ -1,0 +1,232 @@
+{
+  "components": [
+    {
+      "label": "Customer Request",
+      "components": [
+        {
+          "label": "Full Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0iz1w1j",
+            "columns": 8
+          },
+          "id": "Field_1utkvv1",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Company Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0iz1w1j",
+            "columns": 8
+          },
+          "id": "Field_0ym8dce",
+          "key": "companyName",
+          "readonly": true
+        },
+        {
+          "label": "Phone Number",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0iz1w1j",
+            "columns": null
+          },
+          "id": "Field_0yfoifw",
+          "key": "phoneNumber",
+          "readonly": true
+        },
+        {
+          "label": "Email Address",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0iz1w1j",
+            "columns": null
+          },
+          "id": "Field_0fppe2m",
+          "key": "emailAddress",
+          "readonly": true
+        },
+        {
+          "label": "Product Category",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_19khb3e",
+            "columns": null
+          },
+          "id": "Field_1kv9dto",
+          "key": "productCategory",
+          "readonly": true
+        },
+        {
+          "label": "Delivery Timeline",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_19khb3e",
+            "columns": null
+          },
+          "id": "Field_0ue9m6h",
+          "key": "deliveryTimeline",
+          "readonly": true
+        },
+        {
+          "label": "Product Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0efju5z",
+            "columns": null
+          },
+          "id": "Field_0fjqcbs",
+          "key": "productDescriptions",
+          "readonly": true
+        },
+        {
+          "label": "Quantity",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0efju5z",
+            "columns": null
+          },
+          "id": "Field_18a3sef",
+          "key": "quantityNeed",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1htknym",
+        "columns": null
+      },
+      "id": "Field_0fsi664"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_1eidq70",
+        "columns": null
+      },
+      "id": "Field_13mjbhb"
+    },
+    {
+      "label": "Propose alternative Product",
+      "components": [
+        {
+          "label": "Client agrees alternative Product",
+          "values": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ],
+          "type": "radio",
+          "layout": {
+            "row": "Row_14xollb",
+            "columns": null
+          },
+          "id": "Field_0jsylpa",
+          "key": "clientAgrees",
+          "validate": {
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1at1ml4",
+        "columns": null
+      },
+      "id": "Field_0dicbwt"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_1y036ij",
+        "columns": null
+      },
+      "id": "Field_0jz6jha"
+    },
+    {
+      "label": "Prepare request for Procurement",
+      "components": [
+        {
+          "label": "Requirement Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_1d0vc0a",
+            "columns": null
+          },
+          "id": "Field_1oza4wi",
+          "key": "requirementDescription",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Technical Specifications",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_1d0vc0a",
+            "columns": null
+          },
+          "id": "Field_13u0y19",
+          "key": "technicalSpecifications",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Quantity",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0l7fapr",
+            "columns": null
+          },
+          "id": "Field_0le1dt6",
+          "key": "quantity",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "subtype": "date",
+          "dateLabel": "Delivery Date",
+          "type": "datetime",
+          "layout": {
+            "row": "Row_0l7fapr",
+            "columns": null
+          },
+          "id": "Field_0wewf35",
+          "key": "deliveryDate",
+          "validate": {
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_10eac3l",
+        "columns": null
+      },
+      "id": "Field_1jrkt6t",
+      "conditional": {
+        "hide": "=not(clientAgrees = \"no\")"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "alternativeProcurementRequest",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.44.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.24.0",
+  "schemaVersion": 19
+}

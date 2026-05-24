@@ -1,0 +1,190 @@
+{
+  "components": [
+    {
+      "label": "Review Supplier ",
+      "components": [
+        {
+          "label": "Supplier Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0q88z8m",
+            "columns": null
+          },
+          "id": "Field_1f6i00x",
+          "key": "lastSupplierName",
+          "readonly": true
+        },
+        {
+          "label": "Supplier Email",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0q88z8m",
+            "columns": null
+          },
+          "id": "Field_0ljj8z1",
+          "key": "lastSupplierEmail",
+          "readonly": true
+        },
+        {
+          "label": "Price",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0uex6zm",
+            "columns": null
+          },
+          "id": "Field_0zabnsz",
+          "key": "lastPrice",
+          "readonly": true
+        },
+        {
+          "label": "Delivery Time (days)",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0uex6zm",
+            "columns": null
+          },
+          "id": "Field_03p8aqh",
+          "key": "lastDeliveryTime",
+          "readonly": true
+        },
+        {
+          "type": "separator",
+          "layout": {
+            "row": "Row_1ve13s9",
+            "columns": null
+          },
+          "id": "Field_0d6geef"
+        },
+        {
+          "text": "# Please Review ",
+          "type": "text",
+          "layout": {
+            "row": "Row_1vihxnv",
+            "columns": null
+          },
+          "id": "Field_01b994o"
+        },
+        {
+          "label": "Quality Score",
+          "values": [
+            {
+              "label": "1 - Very Poor",
+              "value": "1"
+            },
+            {
+              "label": "2 - Poor",
+              "value": "2"
+            },
+            {
+              "label": "3 - Average",
+              "value": "3"
+            },
+            {
+              "label": "4 - Good",
+              "value": "4"
+            },
+            {
+              "label": "5 - Excellent",
+              "value": "5"
+            }
+          ],
+          "type": "select",
+          "layout": {
+            "row": "Row_1rwgen4",
+            "columns": null
+          },
+          "id": "Field_0l02tax",
+          "key": "lastQualityScore",
+          "description": "If you make changes, please select a number between 1 and 5"
+        },
+        {
+          "label": "Financial Stability",
+          "values": [
+            {
+              "label": "1 - Very Weak",
+              "value": "1"
+            },
+            {
+              "label": "2 - Weak",
+              "value": "2"
+            },
+            {
+              "label": "3 - Moderate",
+              "value": "3"
+            },
+            {
+              "label": "4 - Stable",
+              "value": "4"
+            },
+            {
+              "label": "5 - Very Stable",
+              "value": "5"
+            }
+          ],
+          "type": "select",
+          "layout": {
+            "row": "Row_1rwgen4",
+            "columns": null
+          },
+          "id": "Field_08fp6t5",
+          "key": "lastFinancialStability",
+          "description": "If you make changes, please select a number between 1 and 5"
+        },
+        {
+          "label": "Compliance Level",
+          "values": [
+            {
+              "label": "Full Compliance",
+              "value": "FULL"
+            },
+            {
+              "label": "Partial Compliance",
+              "value": "PARTIAL"
+            },
+            {
+              "label": "No Compliance",
+              "value": "NONE"
+            }
+          ],
+          "type": "select",
+          "layout": {
+            "row": "Row_1rwgen4",
+            "columns": null
+          },
+          "id": "Field_0a2i4st",
+          "key": "lastCompliance"
+        },
+        {
+          "label": "Comment",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_1u8rp7y",
+            "columns": null
+          },
+          "id": "Field_05lixcn",
+          "key": "supplierReviewComment",
+          "description": "Please comment your decision or changes",
+          "validate": {
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_15qjrb4",
+        "columns": null
+      },
+      "id": "Field_0ss27c3"
+    }
+  ],
+  "type": "default",
+  "id": "reviewSupplierResponse",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.44.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.24.0",
+  "schemaVersion": 19
+}

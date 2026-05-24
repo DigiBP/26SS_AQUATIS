@@ -1,0 +1,217 @@
+{
+  "components": [
+    {
+      "label": "Procurement Request",
+      "components": [
+        {
+          "label": "Full Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0xvkj2p",
+            "columns": null
+          },
+          "id": "Field_00gfbed",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Company Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0xvkj2p",
+            "columns": null
+          },
+          "id": "Field_1de3uw6",
+          "key": "companyName",
+          "readonly": true
+        },
+        {
+          "label": "Requirement Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_1f3fder",
+            "columns": null
+          },
+          "id": "Field_0ozz0oi",
+          "key": "requirementDescription",
+          "readonly": true
+        },
+        {
+          "label": "Technical Specifications",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_1f3fder",
+            "columns": null
+          },
+          "id": "Field_1xp9s4x",
+          "key": "technicalSpecifications",
+          "readonly": true
+        },
+        {
+          "label": "Quantity",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0at4kra",
+            "columns": null
+          },
+          "id": "Field_0so29al",
+          "key": "quantity",
+          "readonly": true
+        },
+        {
+          "label": "Delivery Date",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0at4kra",
+            "columns": null
+          },
+          "id": "Field_0c61o21",
+          "key": "deliveryDate",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_12ehu65",
+        "columns": null
+      },
+      "id": "Field_0bjcvbd"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_1lk5us8",
+        "columns": null
+      },
+      "id": "Field_0v28q4k"
+    },
+    {
+      "label": "Feasibility Check",
+      "components": [
+        {
+          "label": "Can an existing supplier fulfill the request?",
+          "values": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ],
+          "type": "radio",
+          "layout": {
+            "row": "Row_05twd0i",
+            "columns": null
+          },
+          "id": "Field_1wwtpse",
+          "key": "feasible",
+          "validate": {
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_12ewfrp",
+        "columns": null
+      },
+      "id": "Field_12f1geb"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_01i642x",
+        "columns": null
+      },
+      "id": "Field_0n8eels"
+    },
+    {
+      "label": "RFQ Contact list",
+      "components": [
+        {
+          "label": "Supplier 1",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0vehvr6",
+            "columns": null
+          },
+          "id": "Field_17dt2ii",
+          "key": "supplier1Name"
+        },
+        {
+          "label": "Supplier 1 E-Mail",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0vehvr6",
+            "columns": null
+          },
+          "id": "Field_0u9jk2u",
+          "key": "supplier1Email"
+        },
+        {
+          "label": "Supplier 2",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0igahrk",
+            "columns": null
+          },
+          "id": "Field_180gae5",
+          "key": "supplier2Name"
+        },
+        {
+          "label": "Supplier 2 E-Mail",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0igahrk",
+            "columns": null
+          },
+          "id": "Field_0fc08jo",
+          "key": "supplier2Email"
+        },
+        {
+          "label": "Supplier 3",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_054md6q",
+            "columns": null
+          },
+          "id": "Field_0k7ibln",
+          "key": "Supplier3Name"
+        },
+        {
+          "label": "Supplier 3 E-Mail",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_054md6q",
+            "columns": null
+          },
+          "id": "Field_05g8zwq",
+          "key": "supplier3Email"
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_11ricos",
+        "columns": null
+      },
+      "id": "Field_0cjidpc",
+      "conditional": {
+        "hide": "=not(feasible = \"no\")"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "feasibleRFQList",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.44.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.24.0",
+  "schemaVersion": 19
+}

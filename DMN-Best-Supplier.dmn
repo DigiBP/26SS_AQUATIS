@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+  xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+  xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+  xmlns:modeler="http://camunda.org/schema/modeler/1.0"
+  id="Definitions_SelectBestSupplier"
+  name="Select Best Supplier"
+  namespace="http://camunda.org/schema/1.0/dmn"
+  exporter="Camunda Modeler"
+  exporterVersion="5.44.0"
+  modeler:executionPlatform="Camunda Platform"
+  modeler:executionPlatformVersion="7.24.0">
+
+  <decision id="SelectBestSupplier" name="Select Best Supplier">
+    <decisionTable id="DecisionTable_SelectBestSupplier" hitPolicy="FIRST">
+
+      <input id="Input_expectedResponses" label="expectedResponses">
+        <inputExpression id="InputExpression_expectedResponses" typeRef="integer">
+          <text>expectedResponses</text>
+        </inputExpression>
+      </input>
+
+      <input id="Input_supplier1Score" label="supplier1Score">
+        <inputExpression id="InputExpression_supplier1Score" typeRef="number">
+          <text>supplier1Score</text>
+        </inputExpression>
+      </input>
+
+      <input id="Input_supplier2Score" label="supplier2Score">
+        <inputExpression id="InputExpression_supplier2Score" typeRef="number">
+          <text>supplier2Score</text>
+        </inputExpression>
+      </input>
+
+      <input id="Input_supplier3Score" label="supplier3Score">
+        <inputExpression id="InputExpression_supplier3Score" typeRef="number">
+          <text>supplier3Score</text>
+        </inputExpression>
+      </input>
+
+      <output id="Output_bestSupplier" name="bestSupplier" typeRef="string" />
+
+      <rule id="Rule_only_supplier1">
+        <inputEntry><text>1</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>"supplier1"</text></outputEntry>
+      </rule>
+
+      <rule id="Rule_supplier1_wins_two">
+        <inputEntry><text>2</text></inputEntry>
+        <inputEntry><text>? &gt;= supplier2Score</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>"supplier1"</text></outputEntry>
+      </rule>
+
+      <rule id="Rule_supplier2_wins_two">
+        <inputEntry><text>2</text></inputEntry>
+        <inputEntry><text>? &lt; supplier2Score</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>"supplier2"</text></outputEntry>
+      </rule>
+
+      <rule id="Rule_supplier1_wins_three">
+        <inputEntry><text>3</text></inputEntry>
+        <inputEntry><text>? &gt;= supplier2Score and ? &gt;= supplier3Score</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>"supplier1"</text></outputEntry>
+      </rule>
+
+      <rule id="Rule_supplier2_wins_three">
+        <inputEntry><text>3</text></inputEntry>
+        <inputEntry><text>? &lt; supplier2Score</text></inputEntry>
+        <inputEntry><text>? &gt;= supplier3Score</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>"supplier2"</text></outputEntry>
+      </rule>
+
+      <rule id="Rule_supplier3_wins_three">
+        <inputEntry><text>3</text></inputEntry>
+        <inputEntry><text>? &lt; supplier3Score</text></inputEntry>
+        <inputEntry><text>? &lt; supplier3Score</text></inputEntry>
+        <inputEntry><text>-</text></inputEntry>
+        <outputEntry><text>"supplier3"</text></outputEntry>
+      </rule>
+
+    </decisionTable>
+  </decision>
+
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_SelectBestSupplier">
+      <dmndi:DMNShape id="DMNShape_SelectBestSupplier" dmnElementRef="SelectBestSupplier">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,148 @@
+{
+  "components": [
+    {
+      "label": "Customer Request",
+      "components": [
+        {
+          "label": "Full Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0733dzi",
+            "columns": null
+          },
+          "id": "Field_069iima",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Company Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0733dzi",
+            "columns": null
+          },
+          "id": "Field_0ldj1cf",
+          "key": "companyName",
+          "readonly": true
+        },
+        {
+          "label": "Phone Number",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0ozdyzu",
+            "columns": null
+          },
+          "id": "Field_0imf6l8",
+          "key": "phoneNumber",
+          "readonly": true
+        },
+        {
+          "label": "Email Address",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0ozdyzu",
+            "columns": null
+          },
+          "id": "Field_0wnsebe",
+          "key": "emailAddress",
+          "readonly": true
+        },
+        {
+          "label": "Product Category",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0m06yuu",
+            "columns": null
+          },
+          "id": "Field_0m42tl9",
+          "key": "productCategory",
+          "readonly": true
+        },
+        {
+          "label": "Delivery Timeline",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0m06yuu",
+            "columns": null
+          },
+          "id": "Field_1y0049t",
+          "key": "deliveryTimeline",
+          "readonly": true
+        },
+        {
+          "label": "Product Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0f7hcgz",
+            "columns": null
+          },
+          "id": "Field_15j3im6",
+          "key": "productDescriptions",
+          "readonly": true
+        },
+        {
+          "label": "Quantity",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_0f7hcgz",
+            "columns": null
+          },
+          "id": "Field_1u5ju5n",
+          "key": "quantityNeed",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_0cjnhjp",
+        "columns": null
+      },
+      "id": "Field_1cg0yjp"
+    },
+    {
+      "label": "Catalogue check",
+      "components": [
+        {
+          "label": "Material in Catalogue?",
+          "values": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ],
+          "type": "radio",
+          "layout": {
+            "row": "Row_0oyscjh",
+            "columns": null
+          },
+          "id": "Field_1adg28d",
+          "key": "materialInCatalogue",
+          "validate": {
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1wme2zk",
+        "columns": null
+      },
+      "id": "Field_0d01379"
+    }
+  ],
+  "type": "default",
+  "id": "CustomerRequestCatalogue",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.44.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.24.0",
+  "schemaVersion": 19
+}
