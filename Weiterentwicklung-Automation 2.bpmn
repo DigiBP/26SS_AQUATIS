@@ -214,23 +214,21 @@ headers;</camunda:script>
 
 var best = 1;
 
-if (bestSupplier == "supplier2") {
+if (bestSupplier === "supplier2") {
   best = 2;
-}
-
-if (bestSupplier == "supplier3") {
+} else if (bestSupplier === "supplier3") {
   best = 3;
 }
 
 execution.setVariable("bestSupplierNumber", best);
-execution.setVariable("bestSupplierScore", execution.getVariable("supplier" + best + "Score"));
 execution.setVariable("bestSupplierName", execution.getVariable("supplier" + best + "Name"));
 execution.setVariable("bestSupplierEmail", execution.getVariable("supplier" + best + "Email"));
 execution.setVariable("bestSupplierPrice", execution.getVariable("supplier" + best + "Price"));
 execution.setVariable("bestSupplierDeliveryTime", execution.getVariable("supplier" + best + "DeliveryTime"));
 execution.setVariable("bestSupplierQualityScore", execution.getVariable("supplier" + best + "QualityScore"));
 execution.setVariable("bestSupplierCompliance", execution.getVariable("supplier" + best + "Compliance"));
-execution.setVariable("bestSupplierFinancialStability", execution.getVariable("supplier" + best + "FinancialStability"));</bpmn:script>
+execution.setVariable("bestSupplierFinancialStability", execution.getVariable("supplier" + best + "FinancialStability"));
+execution.setVariable("bestSupplierScore", execution.getVariable("supplier" + best + "Score"));</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:serviceTask id="Activity_0uyhxsg" name="Generate contract draft">
       <bpmn:extensionElements>
@@ -289,6 +287,17 @@ count = count + 1;
 execution.setVariable("receivedResponses", count);
 
 var supplierNumber = Number(execution.getVariable("lastSupplierNumber"));
+
+if (supplierNumber &lt; 1 || supplierNumber &gt; 3 || isNaN(supplierNumber)) {
+  throw "Invalid supplierNumber: " + execution.getVariable("lastSupplierNumber");
+}
+
+var rawScore = execution.getVariable("supplierScore");
+
+if (rawScore == null) {
+  throw "supplierScore is null. EvaluateSupplierResponse DMN did not return a score.";
+}
+
 var compliance = String(execution.getVariable("lastCompliance")).toUpperCase();
 
 execution.setVariable("supplier" + supplierNumber + "Name", execution.getVariable("lastSupplierName"));
@@ -298,7 +307,9 @@ execution.setVariable("supplier" + supplierNumber + "DeliveryTime", Number(execu
 execution.setVariable("supplier" + supplierNumber + "QualityScore", Number(execution.getVariable("lastQualityScore")));
 execution.setVariable("supplier" + supplierNumber + "Compliance", compliance);
 execution.setVariable("supplier" + supplierNumber + "FinancialStability", Number(execution.getVariable("lastFinancialStability")));
-execution.setVariable("supplier" + supplierNumber + "Score", Number(execution.getVariable("supplierScore")));</bpmn:script>
+execution.setVariable("supplier" + supplierNumber + "Score", Number(rawScore));
+
+execution.setVariable("debugLastStoredSupplier", supplierNumber);</bpmn:script>
     </bpmn:scriptTask>
     <bpmn:businessRuleTask id="EvaluateSupplierResponse" name="Evaluate supplier response" camunda:resultVariable="supplierScore" camunda:decisionRef="EvaluateSupplierResponse" camunda:mapDecisionResult="singleEntry">
       <bpmn:extensionElements />
