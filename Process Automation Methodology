@@ -39,7 +39,7 @@ Based on the AS-IS analysis, a target (TO-BE) process is defined. The new proces
  
 - All required information is captured upfront
 - Responsibilities are clearly assigned to each stakeholder
-> 📄 See [`to_be_process.md`](to_be_process.md) for the full TO-BE process description.
+> See [`to_be_process.md`](to_be_process.md) for the full TO-BE process description.
  
 ---
  
@@ -71,7 +71,7 @@ The model serves as the central reference for the automated workflow.
 - Updating CRM and ERP data stores
 APIs are tested and validated using **Postman** before being integrated into the automated flow.
  
-> 📁 Make blueprints and integration configs are located in the [`integration/`](../integration/) folder.
+> Make blueprints and integration configs are located in the [`integration/`](../integration/) folder.
  
 ---
  
