@@ -42,12 +42,13 @@
 
 ## Project Team / Authors
 
-| Name        | Role                                  | Email                               |
-| ----------- | ------------------------------------- | ----------------------------------- |
-| *[Name]*    | *[e.g. BPMN & Process Modelling]*     | `firstname.lastname@students.fhnw.ch` |
-| *[Name]*    | *[e.g. DMN & Decision Automation]*    | `firstname.lastname@students.fhnw.ch` |
-| *[Name]*    | *[e.g. Forms & UI]*                   | `firstname.lastname@students.fhnw.ch` |
-| *[Name]*    | *[e.g. Make Integration & Testing]*   | `firstname.lastname@students.fhnw.ch` |
+| Name                         | Role                                  | Email                               |
+| ---------------------------- | ------------------------------------- | ----------------------------------- |
+| *Talip Ates*                 | *Make Scenarios & Documentation*      | `firstname.lastname@students.fhnw.ch` |
+| *Joanne Chimuti-Lobsiger*    | *As-IS & To-Be Documentation*         | `firstname.lastname@students.fhnw.ch` |
+| *Harpreet Kaur*              | *Forms, Presenation & Documentation*  | `firstname.lastname@students.fhnw.ch` |
+| *Alexis Marquet*             | *Repository, Documentation*           | `firstname.lastname@students.fhnw.ch` |
+| *Lukas Uske*                 | *To-be BPMN, Make & Documentation*    | `firstname.lastname@students.fhnw.ch` |
 
 ## Supervisors
 
@@ -526,33 +527,5 @@ The current workflow focuses on executing the procurement process. It does not y
 The contract signing step is not yet fully digitalised. The workflow generates and reviews a contract draft, but the final signature is handled manually outside the process. This creates a media break — the contract may need to be downloaded, printed, signed, scanned, and exchanged by email.
 
 **Improvement.** Integrate a **digital signature solution** such as DocuSign or Adobe Acrobat Sign. After the draft is approved, the workflow would automatically send the contract for digital signature, store the signed contract, and continue or close the case without leaving the system.
-
-[⬆️ Back to Top](#table-of-contents)
-
----
-
-# Our Project Workflow Agenda
-
-## Methodology
-
-The full 8-step methodology is documented in [`Process_Automation_Methodology.md`](Process_Automation_Methodology.md).
-
-## Milestones
-
-| Done? | Milestone                                                          | Who   | % Done |
-| ----- | ------------------------------------------------------------------ | ----- | ------ |
-| [X]   | AS-IS process analysis & BPMN modelling                            | All   | 100%   |
-| [X]   | TO-BE process design & BPMN modelling                              | All   | 100%   |
-| [X]   | DMN modelling: Evaluate supplier response                          | *[Name]* | 100% |
-| [X]   | DMN modelling: Select Best Supplier                                | *[Name]* | 100% |
-| [X]   | Camunda Forms: customer request, RFQ list, supplier review        | *[Name]* | 100% |
-| [X]   | Make.com scenario 1: Google Form → start process                   | *[Name]* | 100% |
-| [X]   | Make.com scenario 2: Send RFQ via Router + Gmail                   | *[Name]* | 100% |
-| [X]   | Make.com scenario 3: Supplier response correlation                 | *[Name]* | 100% |
-| [X]   | Make.com scenario 4: Generate contract from Google Docs template   | *[Name]* | 100% |
-| [ ]   | End-to-end test on Camunda Cockpit                                 | All   | *[%]* |
-| [ ]   | Final report (`.docx`) & presentation slides                       | All   | *[%]* |
-| [ ]   | Dry-run rehearsal of presentation                                  | All   | *[%]* |
-| [ ]   | Final submission (28.05.2026)                                      | All   | *[%]* |
 
 [⬆️ Back to Top](#table-of-contents)
