@@ -45,7 +45,7 @@
 | Name                         | Role                                  | Email                               |
 | ---------------------------- | ------------------------------------- | ----------------------------------- |
 | *Talip Ates*                 | *Make Scenarios & Documentation*      | `firstname.lastname@students.fhnw.ch` |
-| *Joanne Chimuti-Lobsiger*    | *As-IS & To-Be Documentation*         | `firstname.lastname@students.fhnw.ch` |
+| *Joanne Chimuti-Lobsiger*    | *As-IS BPMN & To-Be Documentation*         | `firstname.lastname@students.fhnw.ch` |
 | *Harpreet Kaur*              | *Forms, Presenation & Documentation*  | `firstname.lastname@students.fhnw.ch` |
 | *Alexis Marquet*             | *Repository, Documentation*           | `firstname.lastname@students.fhnw.ch` |
 | *Lukas Uske*                 | *To-be BPMN, Make & Documentation*    | `firstname.lastname@students.fhnw.ch` |
