@@ -204,7 +204,7 @@ Procurement opens [`Forms/feasbible_RFQ-list_1.form`](Forms/feasbible_RFQ-list_1
 - Otherwise, compile a list of **3–5 candidate suppliers** to receive an RFQ.
 
 ### 6. Send RFQs via Make.com
-A Camunda **Send Task** posts the RFQ payload to a Make.com webhook. Make.com routes the request to each of the 3–5 supplier email addresses, generating individual RFQ emails.
+A Camunda **Send Task** posts the RFQ payload to a Make.com webhook. Make.com routes the request to each of the 3 supplier email addresses, generating individual RFQ emails.
 
 > 🖼️ See [`Make/2-Send_RFQ.png`](Make/2-Send_RFQ.png) — webhook → router → 3 supplier email branches.
 
