@@ -183,7 +183,7 @@ A customer fills out the **"Submit Request"** form on the e-commerce site. The f
 ### 2. Trigger Camunda via Make.com
 When the form is submitted, **Make.com** picks it up via the Google Forms module and sends an HTTP `POST` to Camunda's REST API:
 ```
-POST /engine-rest/process-definition/key/{processKey}/start
+POST https://digibp.engine.martinlab.science/engine-rest/process-definition/key/supplier_request_process/tenant-id/26DIGIBP34/start
 ```
 This starts a new process instance with the form data as process variables.
 
