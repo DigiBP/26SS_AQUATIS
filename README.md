@@ -1,4 +1,4 @@
-# Digitalised Source-to-Order with Automated Supplier Selection
+# Digitalised Source-to-Order with Supplier Selection
 
 ### **Team: Aquatis**
 
@@ -47,7 +47,7 @@
 | *Talip Ates*                 | *Make Scenarios & Documentation*      | `talip.ates@students.fhnw.ch`             |
 | *Joanne Chimuti-Lobsiger*    | *As-IS BPMN & To-Be Documentation*    | `joanne.chimutilobsiger@students.fhnw.ch` |
 | *Harpreet Kaur*              | *Forms, Presenation & Documentation*  | `harpreet.kaur@students.fhnw.ch`          |
-| *Alexis Marquet*             | *Repository, Documentation*           | `firstname.lastname@students.fhnw.ch`     |
+| *Alexis Marquet*             | *Repository, Documentation*           | `alexis.marquet@students.fhnw.ch`     |
 | *Lukas Uske*                 | *To-be BPMN, Make & Documentation*    | `lukas.uske@students.fhnw.ch`             |
 
 ## Supervisors
