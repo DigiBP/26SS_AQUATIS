@@ -74,6 +74,51 @@ The core innovation lies in the **automated supplier selection** step: incoming 
 
 ---
 
+## How to Run the Process
+
+The implemented process combines Camunda, Make.com and Google Forms to demonstrate a digital source-to-order workflow with supplier selection. The process can be tested end-to-end by submitting a new material request and then following the created process instance in Camunda.
+
+### 1. Start the Process
+
+The process starts with the external Google Form **New Material Request**.
+
+[Open New Material Request Form](https://docs.google.com/forms/d/e/1FAIpQLSeTFIsw-KNPZBVw3_ue3LixSkw15_3P3KyKSNXANNTvKQDmOw/viewform?usp=header)
+
+After submitting the form, Make.com transfers the submitted request data to Camunda and starts a new process instance under the project tenant `26DIGIBP34`.
+
+### 2. Follow the Process in Camunda
+
+After the process has been started, it can be followed in the DigiBP Camunda Tasklist.
+
+[Open DigiBP Camunda Tasklist](https://digibp.engine.martinlab.science/camunda/app/tasklist/default/#/login)
+
+After logging in, select the project tenant `26DIGIBP34` and complete the generated user tasks in sequence. The main user tasks are:
+
+1. **Review Customer Request and Catalogue Check**  
+   Sales reviews the request and checks whether the requested material is available in the catalogue.
+
+2. **Alternative Procurement Request**  
+   If the requested material is not available or not feasible, Sales can propose an alternative product.
+
+3. **Feasibility Check and RFQ Contact List**  
+   Procurement checks feasibility and enters the supplier contacts for the RFQ.
+
+4. **Review Supplier Response**  
+   Procurement reviews the submitted supplier quotations.
+
+5. **Review Contract Draft**  
+   Procurement reviews the generated contract draft before finalisation.
+
+### 3. Submit Supplier Responses
+
+Supplier quotations are submitted through the external Google Form **RFQ Response**.
+
+[Open RFQ Response Form](https://docs.google.com/forms/d/e/1FAIpQLSco4foSfT7dFTarkni2qyGCryNh_46HVuw1-V4ZWXt5Oj3vYg/viewform?usp=header)
+
+In the actual process, the RFQ links are sent to suppliers with pre-filled fields such as the process instance ID and supplier information. This allows each submitted supplier response to be matched to the correct Camunda process instance in tenant `26DIGIBP34`.
+
+---
+
 ## Repository Structure
 
 ```
