@@ -371,7 +371,8 @@ The executable BPMN model ([`Weiterentwicklung-Automation_2.bpmn`](BPMN/Weiteren
 
 Process instances are started by Make.com (Google Forms trigger) via:
 ```http
-POST /engine-rest/process-definition/key/{processKey}/start
+POST https://digibp.engine.martinlab.science/engine-rest/process-definition/key/supplier_request_process/tenant-id/26DIGIBP34/start
+
 Content-Type: application/json
 
 {
