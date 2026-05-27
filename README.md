@@ -460,7 +460,7 @@ All human interactions occur through Camunda Forms (`.form`) rendered in the **C
 | -------------------------------------------------------------------- | ------------ | ---------------------------------------------------- |
 | [`Forms/customer-request-catalogue_1.form`](Forms/customer-request-catalogue_1.form)       | Sales        | Review customer request + record catalogue check     |
 | [`Forms/alternative_procurement-request_1.form`](Forms/alternative_procurement-request_1.form) | Sales        | Propose an alternative product; prepare procurement  |
-| [`Forms/feasbible_RFQ-list_1.form`](Forms/feasbible_RFQ-list_1.form)                       | Procurement  | Feasibility check + capture RFQ contact list (3–5 suppliers) |
+| [`Forms/feasbible_RFQ-list_1.form`](Forms/feasbible_RFQ-list_1.form)                       | Procurement  | Feasibility check + capture RFQ contact list (3 suppliers) |
 | [`Forms/Review-Supplier_1.form`](Forms/Review-Supplier_1.form)                             | Procurement  | Review individual supplier responses                 |
 | [`Forms/Review_Contract_Draft_1.form`](Forms/Review_Contract_Draft_1.form)                 | Procurement  | Review the generated contract draft                  |
 
