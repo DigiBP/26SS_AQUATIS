@@ -42,13 +42,13 @@
 
 ## Project Team / Authors
 
-| Name                         | Role                                  | Email                               |
-| ---------------------------- | ------------------------------------- | ----------------------------------- |
-| *Talip Ates*                 | *Make Scenarios & Documentation*      | `firstname.lastname@students.fhnw.ch` |
-| *Joanne Chimuti-Lobsiger*    | *As-IS BPMN & To-Be Documentation*         | `firstname.lastname@students.fhnw.ch` |
-| *Harpreet Kaur*              | *Forms, Presenation & Documentation*  | `firstname.lastname@students.fhnw.ch` |
-| *Alexis Marquet*             | *Repository, Documentation*           | `firstname.lastname@students.fhnw.ch` |
-| *Lukas Uske*                 | *To-be BPMN, Make & Documentation*    | `firstname.lastname@students.fhnw.ch` |
+| Name                         | Role                                  | Email                                     |
+| ---------------------------- | ------------------------------------- | ----------------------------------------- |
+| *Talip Ates*                 | *Make Scenarios & Documentation*      | `talip.ates@students.fhnw.ch`             |
+| *Joanne Chimuti-Lobsiger*    | *As-IS BPMN & To-Be Documentation*    | `joanne.chimutilobsiger@students.fhnw.ch` |
+| *Harpreet Kaur*              | *Forms, Presenation & Documentation*  | `harpreet.kaur@students.fhnw.ch`          |
+| *Alexis Marquet*             | *Repository, Documentation*           | `firstname.lastname@students.fhnw.ch`     |
+| *Lukas Uske*                 | *To-be BPMN, Make & Documentation*    | `lukas.uske@students.fhnw.ch`             |
 
 ## Supervisors
 
