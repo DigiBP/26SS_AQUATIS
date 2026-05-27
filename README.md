@@ -457,15 +457,22 @@ Make.com scenarios bridge Camunda and external services. There are **four** scen
 
 All human interactions occur through Camunda Forms (`.form`) rendered in the **Camunda Tasklist**:
 
-| File                                                                 | Used by      | Purpose                                              |
-| -------------------------------------------------------------------- | ------------ | ---------------------------------------------------- |
-| [`Forms/customer-request-catalogue_1.form`](Forms/customer-request-catalogue_1.form)       | Sales        | Review customer request + record catalogue check     |
-| [`Forms/alternative_procurement-request_1.form`](Forms/alternative_procurement-request_1.form) | Sales        | Propose an alternative product; prepare procurement  |
-| [`Forms/feasbible_RFQ-list_1.form`](Forms/feasbible_RFQ-list_1.form)                       | Procurement  | Feasibility check + capture RFQ contact list (3 suppliers) |
-| [`Forms/Review-Supplier_1.form`](Forms/Review-Supplier_1.form)                             | Procurement  | Review individual supplier responses                 |
-| [`Forms/Review_Contract_Draft_1.form`](Forms/Review_Contract_Draft_1.form)                 | Procurement  | Review the generated contract draft                  |
+| File | Screenshot | Used by | Purpose |
+| ---- | ---------- | ------- | ------- |
+| [`Forms/customer-request-catalogue 1.form`](Forms/customer-request-catalogue%201.form) | [Screenshot](Forms/Form-Customer-Request-Catalogue.png) | Sales | Review customer request + record catalogue check |
+| [`Forms/alternative_procurement-request 1.form`](Forms/alternative_procurement-request%201.form) | [Screenshot](Forms/Form-Alternative-proc-Request.png) | Sales | Propose an alternative product; prepare procurement |
+| [`Forms/feasible_RFQ-list.form`](Forms/feasible_RFQ-list%201.form) | [Screenshot](Forms/Form-Feasible-RFQ-List.png) | Procurement | Feasibility check + capture RFQ contact list (3 suppliers) |
+| [`Forms/Review-Supplier 1.form`](Forms/Review-Supplier%201.form) | [Screenshot](Forms/Form-Review-Supplier.png) | Procurement | Review individual supplier responses |
+| [`Forms/Review_Contract_Draft 1.form`](Forms/Review_Contract_Draft%201.form) | [Screenshot](Forms/HTTP-Form-Review-Contract-Draft.png) | Procurement | Review the generated contract draft |
 
 The customer-facing **request** and the supplier-facing **quotation submission** are both implemented as **Google Forms** outside Camunda, integrated via Make.com.
+
+The following Google Forms are used for interactions outside the Camunda Tasklist. They are integrated into the workflow through Make.com.
+
+| Google Form | Link | Screenshot | Used by | Purpose |
+| ----------- | ---- | ---------- | ------- | ------- |
+| New Material Request | [Open form](https://docs.google.com/forms/d/e/1FAIpQLSeTFIsw-KNPZBVw3_ue3LixSkw15_3P3KyKSNXANNTvKQDmOw/viewform?usp=header) | [Screenshot](Forms/Google-Form-New-Material-Request.pdf) | Customer / Requester | Starting form for submitting a new material procurement request |
+| RFQ Response | [Open form](https://docs.google.com/forms/d/e/1FAIpQLSco4foSfT7dFTarkni2qyGCryNh_46HVuw1-V4ZWXt5Oj3vYg/viewform?usp=header) | [Screenshot](Forms/Google-Form-RFQ-Response.pdf) | Supplier | Supplier-facing quotation submission form with pre-filled fields for process instance and supplier data |
 
 [⬆️ Back to Top](#table-of-contents)
 
