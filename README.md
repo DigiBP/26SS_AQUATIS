@@ -136,7 +136,7 @@ The Make.com scenarios use polling-based triggers for Google Form responses. Thi
 ├── Forms/                         Camunda user task forms (.form)
 │   ├── customer-request-catalogue_1.form     Customer request + catalogue check
 │   ├── alternative_procurement-request_1.form Alternative product proposal
-│   ├── feasbible_RFQ-list_1.form             Feasibility check + RFQ contact list
+│   ├── feasbible_RFQ-list.form             Feasibility check + RFQ contact list
 │   ├── Review-Supplier_1.form                Review supplier responses
 │   └── Review_Contract_Draft_1.form          Review contract draft
 ├── Make/                          Make.com integration screenshots
