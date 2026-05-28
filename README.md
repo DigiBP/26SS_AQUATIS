@@ -463,44 +463,52 @@ Make.com scenarios bridge Camunda and external services. There are **four** scen
 
 `Custom Webhook` → `Google Docs (Create from Template)` → `HTTP POST /engine-rest/message` to correlate `contractDraftGenerated`.
 
-## End-to-End Flow
+## End-to-End Flow of the Executable Prototype
 
-```
-1. Google Form submission (customer request)
+```text
+1. Google Form submission: New Material Request
    ↓ Make scenario 1
-2. Camunda process instance starts
+2. Camunda process instance starts under tenant 26DIGIBP34
    ↓
-3. Sales user task: Check Material Catalogue
-   ├─ in catalogue → standard sales (end)
-   └─ not in catalogue → continue
+3. Sales user task: Review Customer Request and Catalogue Check
+   ├─ material in catalogue → standard sales process / end of prototype path
+   └─ material not in catalogue → continue with procurement
    ↓
-4. (optional) Propose alternative → if accepted, end
+4. Optional Sales user task: Alternative Procurement Request
+   ├─ alternative accepted → standard sales process / end of prototype path
+   └─ no suitable alternative or procurement required → continue
    ↓
-5. Procurement user task: Feasibility Check & RFQ List
-   ├─ existing supplier OK → Source through existing supplier (end)
-   └─ otherwise → continue
+5. Procurement user task: Feasibility Check and RFQ Contact List
+   ├─ existing supplier can fulfil request → source through existing supplier / end of prototype path
+   └─ external RFQ required → continue
    ↓
-6. Camunda Send Task → Make scenario 2 → 3 supplier emails
+6. Camunda sends RFQ payload to Make scenario 2
    ↓
-7. Wait for 3× supplierResponseReceived message events
-   (each populated via Make scenario 3 → /engine-rest/message)
+7. Make.com sends RFQ emails to the entered supplier contacts
    ↓
-8. For each response: Business Rule Task → DMN "Evaluate supplier response"
+8. Suppliers submit quotations through the RFQ Response Google Form
+   ↓ Make scenario 3
+9. Make.com correlates supplierResponseReceived messages to the running Camunda instance
    ↓
-9. All responses scored → Business Rule Task → DMN "Select Best Supplier"
+10. Business Rule Task: Evaluate each supplier response with DMN "EvaluateSupplierResponse"
    ↓
-10. User task: Review Selected Supplier
-    ├─ accept → continue
-    └─ override → next-ranked supplier
+11. Gateway: all expected supplier responses received?
+   ├─ no → wait for further supplier responses
+   └─ yes → continue
    ↓
-11. Camunda Send Task → Make scenario 4 → contract draft in Google Docs
-    Wait for contractDraftGenerated message
+12. Business Rule Task: Select best supplier with DMN "SelectBestSupplier"
    ↓
-12. User task: Review contract draft + negotiation loop
+13. Procurement user task: Review Supplier Recommendation
    ↓
-13. Purchase Order generated → sent to supplier → confirmation archived
+14. Camunda sends contract-generation request to Make scenario 4
    ↓
-14. Process ends — case archived
+15. Make.com generates a contract draft in Google Docs
+   ↓
+16. Make.com correlates contractDraftGenerated message to Camunda
+   ↓
+17. Procurement user task: Review Contract Draft
+   ↓
+18. End of executable prototype. The User can download the contract draft and continue manually with the process
 ```
 
 [⬆️ Back to Top](#table-of-contents)
