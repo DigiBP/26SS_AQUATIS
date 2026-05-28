@@ -11,7 +11,7 @@
 ## Table of Contents
 
 - [Project Members](#project-members)
-- [Abstract & Project Overview](#abstract--project-overview)
+- [Abstract & Project Overview](#abstract-project-overview)
 - [Repository Structure](#repository-structure)
 - [AS-IS Process](#as-is-process)
   - [Process Description](#process-description)
@@ -31,9 +31,9 @@
 - [Workflow Orchestration](#workflow-orchestration)
   - [Camunda BPMN Engine](#camunda-bpmn-engine)
   - [Make.com Integration](#makecom-integration)
-  - [End-to-End Flow](#end-to-end-flow)
+  - [End-to-End Flow](#end-to-end-flow-of-the-executable-prototype)
 - [Digital User Interfaces (Forms)](#digital-user-interfaces-forms)
-- [Limitations & Future Improvements](#limitations--future-improvements)
+- [Limitations & Future Improvements](#limitations-future-improvements)
 - [Project Workflow Agenda](#our-project-workflow-agenda)
 - [Data Dictionary](Docs/Data_Dictionary.md)
 ---
@@ -235,7 +235,7 @@ The TO-BE model is split across two BPMN files:
 ### 1. Customer Request Submission
 A customer fills out the **"Submit Request"** form on the e-commerce site. The form is implemented as a **Google Form** that captures: customer details, requested product, quantity, sustainability requirements, and deadline.
 
-> 📄 Form: [`Forms/customer-request-catalogue_1.form`](Forms/customer-request-catalogue_1.form) — used by Sales to review and check the catalogue.
+> 📄 Form: [`Forms/customer-request-catalogue 1.form`](Forms/customer-request-catalogue%201.form) — used by Sales to review and check the catalogue.
 
 ### 2. Trigger Camunda via Make.com
 When the form is submitted, **Make.com** picks it up via the Google Forms module and sends an HTTP `POST` to Camunda's REST API:
@@ -253,10 +253,10 @@ A user task is created in the **Camunda Tasklist** for Sales: "*View new request
 - **No** → Procurement is engaged.
 
 ### 4. Propose Alternative (Optional)
-If a close alternative exists, Sales proposes it to the customer via [`Forms/alternative_procurement-request_1.form`](Forms/alternative_procurement-request_1.form). If the customer accepts, the standard process resumes; otherwise the procurement flow is triggered.
+If a close alternative exists, Sales proposes it to the customer via [`Forms/alternative_procurement-request 1.form`](Forms/alternative_procurement-request%201.form). If the customer accepts, the standard process resumes; otherwise the procurement flow is triggered.
 
 ### 5. Procurement: Feasibility Check & RFQ List
-Procurement opens [`Forms/feasbible_RFQ-list_1.form`](Forms/feasbible_RFQ-list_1.form) to:
+Procurement opens [`Forms/feasbible_RFQ-list.form`](Forms/feasbible_RFQ-list.form) to:
 - Decide whether an **existing supplier** can fulfil the request (if so, source directly).
 - Otherwise, compile a list of **3 candidate suppliers** to receive an RFQ.
 
@@ -271,13 +271,13 @@ The process pauses on **`supplierResponseReceived`** message catch events. Suppl
 > 🖼️ See [`Make/3-Supplier_Response.png`](Make/3-Supplier_Response.png).
 
 ### 8. Score Each Supplier Response (DMN — `Evaluate supplier response`)
-Each incoming supplier response triggers a **Business Rule Task** that invokes the [`DMN/Evaluate-supplier-response_1.dmn`](DMN/Evaluate-supplier-response_1.dmn) decision. See [Decision Automation](#decision-automation-dmn) below for details. The resulting `supplierScore` is stored back as a process variable.
+Each incoming supplier response triggers a **Business Rule Task** that invokes the [`DMN/Evaluate-supplier-response 1.dmn`](DMN/Evaluate-supplier-response%201.dmn) decision. See [Decision Automation](#decision-automation-dmn) below for details. The resulting `supplierScore` is stored back as a process variable.
 
 ### 9. Select Best Supplier (DMN — `Select Best Supplier`)
-Once all expected responses are scored, a second Business Rule Task runs [`DMN/DMN-Best-Supplier_1.dmn`](DMN/DMN-Best-Supplier_1.dmn), which compares `supplier1Score`, `supplier2Score`, and `supplier3Score` and returns the winner.
+Once all expected responses are scored, a second Business Rule Task runs [`DMN/DMN-Best-Supplier 1.dmn`](DMN/DMN-Best-Supplier%201.dmn), which compares `supplier1Score`, `supplier2Score`, and `supplier3Score` and returns the winner.
 
 ### 10. Human Review (User Task)
-The recommended supplier is presented to a procurement manager via [`Forms/Review-Supplier_1.form`](Forms/Review-Supplier_1.form). The reviewer can:
+The recommended supplier is presented to a procurement manager via [`Forms/Review-Supplier 1.form`](Forms/Review-Supplier%201.form). The reviewer can:
 - **Accept** the recommendation → continue to contract.
 - **Override** with justification → procurement can manually document a different decision.
 
@@ -323,7 +323,7 @@ Two DMN decision tables drive the automated supplier-selection logic. They are i
 
 ## 1. Evaluate Supplier Response
 
-> **File:** [`DMN/Evaluate-supplier-response_1.dmn`](DMN/Evaluate-supplier-response_1.dmn)
+> **File:** [`DMN/Evaluate-supplier-response 1.dmn`](DMN/Evaluate-supplier-response%201.dmn)
 > **Decision ID:** `EvaluateSupplierResponse`
 > **Hit Policy:** `FIRST`
 
@@ -357,7 +357,7 @@ The full table contains 33 rules (1 `NONE` + 16 `FULL` × 16 `PARTIAL`).
 
 ## 2. Select Best Supplier
 
-> **File:** [`DMN/DMN-Best-Supplier_1.dmn`](DMN/DMN-Best-Supplier_1.dmn)
+> **File:** [`DMN/DMN-Best-Supplier 1.dmn`](DMN/DMN-Best-Supplier%201.dmn)
 > **Decision ID:** `SelectBestSupplier`
 > **Hit Policy:** `FIRST`
 
@@ -533,7 +533,7 @@ All human interactions occur through Camunda Forms (`.form`) rendered in the **C
 | ---- | ---------- | ------- | ------- |
 | [`Forms/customer-request-catalogue 1.form`](Forms/customer-request-catalogue%201.form) | [Screenshot](Forms/Form-Customer-Request-Catalogue.png) | Sales | Review customer request + record catalogue check |
 | [`Forms/alternative_procurement-request 1.form`](Forms/alternative_procurement-request%201.form) | [Screenshot](Forms/Form-Alternative-proc-Request.png) | Sales | Propose an alternative product; prepare procurement |
-| [`Forms/feasible_RFQ-list.form`](Forms/feasible_RFQ-list%201.form) | [Screenshot](Forms/Form-Feasible-RFQ-List.png) | Procurement | Feasibility check + capture RFQ contact list (3 suppliers) |
+| [`Forms/feasbible_RFQ-list.form`](Forms/feasbible_RFQ-list.form) | [Screenshot](Forms/Form-Feasible-RFQ-List.png) | Procurement | Feasibility check + capture RFQ contact list (3 suppliers) |
 | [`Forms/Review-Supplier 1.form`](Forms/Review-Supplier%201.form) | [Screenshot](Forms/Form-Review-Supplier.png) | Procurement | Review individual supplier responses |
 | [`Forms/Review_Contract_Draft 1.form`](Forms/Review_Contract_Draft%201.form) | [Screenshot](Forms/HTTP-Form-Review-Contract-Draft.png) | Procurement | Review the generated contract draft |
 
