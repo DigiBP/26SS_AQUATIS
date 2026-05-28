@@ -46,7 +46,7 @@
 | ---------------------------- | ------------------------------------- | ----------------------------------------- |
 | *Talip Ates*                 | *Make Scenarios & Documentation*      | `talip.ates@students.fhnw.ch`             |
 | *Joanne Chimuti-Lobsiger*    | *As-IS BPMN & To-Be Documentation*    | `joanne.chimutilobsiger@students.fhnw.ch` |
-| *Harpreet Kaur*              | *Forms, Presenation & Documentation*  | `harpreet.kaur@students.fhnw.ch`          |
+| *Harpreet Kaur*              | *Forms, Presentation & Documentation*  | `harpreet.kaur@students.fhnw.ch`          |
 | *Alexis Marquet*             | *Repository, Documentation*           | `alexis.marquet@students.fhnw.ch`     |
 | *Lukas Uske*                 | *To-be BPMN, Make & Documentation*    | `lukas.uske@students.fhnw.ch`             |
 
@@ -118,7 +118,7 @@ Supplier quotations are submitted through the external Google Form **RFQ Respons
 In the actual process, the RFQ links are sent to suppliers with pre-filled fields such as the process instance ID and supplier information. This allows each submitted supplier response to be matched to the correct Camunda process instance in tenant `26DIGIBP34`.
 
 #### Limitation of Make.com
-The Make.com scenarios use polling-based triggers for Google Form responses. This means that Make.com checks regularly whether new responses are available. If no new data is found, the scenario does not continue (intervall every 15 minutes). 
+The Make.com scenarios use polling-based triggers for Google Form responses. This means that Make.com checks regularly whether new responses are available. If no new data is found, the scenario does not continue (interval: every 15 minutes). 
 
 ---
 
@@ -258,7 +258,7 @@ If a close alternative exists, Sales proposes it to the customer via [`Forms/alt
 ### 5. Procurement: Feasibility Check & RFQ List
 Procurement opens [`Forms/feasbible_RFQ-list_1.form`](Forms/feasbible_RFQ-list_1.form) to:
 - Decide whether an **existing supplier** can fulfil the request (if so, source directly).
-- Otherwise, compile a list of **3–5 candidate suppliers** to receive an RFQ.
+- Otherwise, compile a list of **3 candidate suppliers** to receive an RFQ.
 
 ### 6. Send RFQs via Make.com
 A Camunda **Send Task** posts the RFQ payload to a Make.com webhook. Make.com routes the request to each of the 3 supplier email addresses, generating individual RFQ emails.
@@ -279,7 +279,7 @@ Once all expected responses are scored, a second Business Rule Task runs [`DMN/D
 ### 10. Human Review (User Task)
 The recommended supplier is presented to a procurement manager via [`Forms/Review-Supplier_1.form`](Forms/Review-Supplier_1.form). The reviewer can:
 - **Accept** the recommendation → continue to contract.
-- **Override** with justification → next-ranked supplier is selected.
+- **Override** with justification → procurement can manually document a different decision.
 
 ### 11. Generate Contract Draft via Make.com
 Camunda fires a webhook to Make.com, which uses **Google Docs** to render a contract from a template, populating the supplier name, terms, and price.
@@ -287,10 +287,10 @@ Camunda fires a webhook to Make.com, which uses **Google Docs** to render a cont
 > 🖼️ See [`Make/4-Generate_contract-draft.png`](Make/4-Generate_contract-draft.png) — Webhook → Google Docs (create from template) → HTTP back to Camunda.
 
 ### 12. Contract Review 
-The generated contract draft is reviewed via [`Forms/Review_Contract_Draft 1.form`](Forms/Review_Contract_Draft%201.form). Procurement can check the generated contract draft and decide whether it is acceptable. In the current Process, this step represents the manual review before finalisation.
+The generated contract draft is reviewed via [`Forms/Review_Contract_Draft 1.form`](Forms/Review_Contract_Draft%201.form). Procurement can check the generated contract draft and decide whether it is acceptable. In the current process this step represents the manual review before finalisation.
 
 ### 13. Process Closure
-After the contract draft has been reviewed, the Process reaches its final review stage. Due to our company's internal policies, signatures must currently still be provided manually. Therefore, the pre-filled contract can be downloaded and reused.
+After the contract draft has been reviewed, the process reaches its final review stage. Due to our company's internal policies, signatures must currently still be provided manually. Therefore, the pre-filled contract can be downloaded and reused.
 
 ## Challenges Addressed by the TO-BE Process
 
@@ -300,7 +300,7 @@ After the contract draft has been reviewed, the Process reaches its final review
 | Excel-based supplier comparison; inconsistent decisions    | DMN decision tables produce auditable, reproducible scores      |
 | Fragmented tooling (CRM, Excel, email, ERP)                | Camunda orchestrates; Make.com integrates external services    |
 | No visibility on request status                            | Camunda Cockpit provides real-time process instance tracking    |
-| Email-based RFQ and contract loops                         | Automated RFQ dispatch, message catch events, timer escalations |
+| Email-based RFQ handling                                   | Automated RFQ dispatch and message catch events; timer escalations are planned as future improvement |
 | No audit trail                                             | Every decision, score, and form submission stored as variables  |
 
 ## Users and Stakeholders
@@ -423,7 +423,6 @@ The executable BPMN model ([`Weiterentwicklung-Automation_2.bpmn`](BPMN/Weiteren
 | **Business Rule Task**     | `Evaluate supplier response` (DMN #1); `Select best supplier` (DMN #2) |
 | **Message Catch Event**    | `supplierResponseReceived`, `contractDraftGenerated`                  |
 | **Exclusive Gateway (XOR)**| `material in catalogue?`, `client agrees?`, `Can an existing supplier fulfill the request?`, `All responses received?` |
-| **Timer Boundary Event**   | Reminder timers on supplier-response and contract-review tasks        |
 
 ### Starting a Process Instance
 
@@ -517,7 +516,7 @@ Make.com scenarios bridge Camunda and external services. There are **four** scen
    ↓
 17. Procurement user task: Review Contract Draft
    ↓
-18. End of executable prototype. The User can download the contract draft and continue manually with the process
+18. End of executable prototype. The user can download the contract draft and continue manually with the process
 ```
 
 [⬆️ Back to Top](#table-of-contents)
