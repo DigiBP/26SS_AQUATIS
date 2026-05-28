@@ -35,7 +35,7 @@
 - [Digital User Interfaces (Forms)](#digital-user-interfaces-forms)
 - [Limitations & Future Improvements](#limitations--future-improvements)
 - [Project Workflow Agenda](#our-project-workflow-agenda)
-
+- [Data Dictionary](Docs/Data_Dictionary.md)
 ---
 
 # Project Members
@@ -423,6 +423,8 @@ The executable BPMN model ([`Weiterentwicklung-Automation_2.bpmn`](BPMN/Weiteren
 | **Business Rule Task**     | `Evaluate supplier response` (DMN #1); `Select best supplier` (DMN #2) |
 | **Message Catch Event**    | `supplierResponseReceived`, `contractDraftGenerated`                  |
 | **Exclusive Gateway (XOR)**| `material in catalogue?`, `client agrees?`, `Can an existing supplier fulfill the request?`, `All responses received?` |
+
+For a detailed overview of the process variables used across Camunda, Make.com, Google Forms and DMN decision tables, see the [Data Dictionary](Docs/Data_Dictionary.md).
 
 ### Starting a Process Instance
 
