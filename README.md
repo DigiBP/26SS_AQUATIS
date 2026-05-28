@@ -436,24 +436,29 @@ Content-Type: application/json
 ## Make.com Integration
 
 Make.com scenarios bridge Camunda and external services. There are **four** scenarios:
+> Note: The Make.com scenario links are shared for documentation and review purposes. They provide a read-only view of the automation logic. The executable scenarios remain in the project Make.com workspace.
 
 ### Scenario 1 — Trigger Process from Google Form
 > 🖼️ [`Make/1-Trigger_Integration_Google-Forms_HTTP.png`](Make/1-Trigger_Integration_Google-Forms_HTTP.png)
+> 🔍 [View read-only Make scenario](https://eu1.make.com/public/shared-scenario/WcpIaP5PdpB/1-trigger-integration-google-forms-htt)
 
 `Google Forms (Watch Responses)` → `HTTP POST /engine-rest/process-definition/key/{key}/start`
 
 ### Scenario 2 — Send RFQs to Suppliers
 > 🖼️ [`Make/2-Send_RFQ.png`](Make/2-Send_RFQ.png)
+> 🔍 [View read-only Make scenario: Send RFQ](https://eu1.make.com/public/shared-scenario/ZWe6cXPJurT/2-send-rfq)
 
 `Custom Webhook (from Camunda)` → `Router` → `Gmail × 3` (one branch per supplier email).
 
 ### Scenario 3 — Receive Supplier Responses
 > 🖼️ [`Make/3-Supplier_Response.png`](Make/3-Supplier_Response.png)
+> 🔍 [View read-only Make scenario: Supplier Response](https://eu1.make.com/public/shared-scenario/cFjOgpsfDM8/3-supplier-response)
 
 `Google Forms (Watch Responses)` → `HTTP POST /engine-rest/message` to correlate `supplierResponseReceived` to the running instance.
 
 ### Scenario 4 — Generate Contract Draft
 > 🖼️ [`Make/4-Generate_contract-draft.png`](Make/4-Generate_contract-draft.png)
+> 🔍 [View read-only Make scenario: Generate Contract Draft](https://eu1.make.com/public/shared-scenario/0BUzqPCd6Al/4-generate-contract-draft)
 
 `Custom Webhook` → `Google Docs (Create from Template)` → `HTTP POST /engine-rest/message` to correlate `contractDraftGenerated`.
 
