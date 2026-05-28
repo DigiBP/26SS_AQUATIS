@@ -118,7 +118,11 @@ Supplier quotations are submitted through the external Google Form **RFQ Respons
 In the actual process, the RFQ links are sent to suppliers with pre-filled fields such as the process instance ID and supplier information. This allows each submitted supplier response to be matched to the correct Camunda process instance in tenant `26DIGIBP34`.
 
 #### Limitation of Make.com
-The Make.com scenarios use polling-based triggers for Google Form responses. This means that Make.com checks regularly whether new responses are available. If no new data is found, the scenario does not continue (interval: every 15 minutes). 
+The Make.com scenarios use polling-based triggers for Google Form responses. This means that Make.com checks regularly whether new responses are available. If no new data is found, the scenario does not continue (interval: every 15 minutes).
+
+Lecturers can access our dashboard on Make.com directly and trigger the scenarios manually as well.
+🔗 [Open Make.com project dashboard](https://eu1.make.com/organization/7397362/dashboard)
+
 
 ---
 
