@@ -12,7 +12,7 @@
 
 - [Project Members](#project-members)
 - [Abstract & Project Overview](#abstract-project-overview)
-- [Process Automation Methodology](#process-automation-methodology)
+- [Methodology](#methodology)
 - [Repository Structure](#repository-structure)
 - [AS-IS Process](#as-is-process)
   - [Process Description](#process-description)
@@ -75,7 +75,7 @@ The core innovation lies in the **automated supplier selection** step: incoming 
 
 ---
  
-# Process Automation Methodology
+# Methodology
  
 This project follows a process-driven automation methodology designed to digitalise the Source-to-Order process using low-code tools, APIs, and workflow orchestration. The methodology is practical and implementation-focused, guiding the project from process analysis to end-to-end testing.
  
