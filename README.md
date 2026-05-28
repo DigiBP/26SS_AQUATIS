@@ -117,6 +117,9 @@ Supplier quotations are submitted through the external Google Form **RFQ Respons
 
 In the actual process, the RFQ links are sent to suppliers with pre-filled fields such as the process instance ID and supplier information. This allows each submitted supplier response to be matched to the correct Camunda process instance in tenant `26DIGIBP34`.
 
+#### Limitation of Make.com
+The Make.com scenarios use polling-based triggers for Google Form responses. This means that Make.com checks regularly whether new responses are available. If no new data is found, the scenario does not continue. 
+
 ---
 
 ## Repository Structure
@@ -539,43 +542,49 @@ The current supplier evaluation is based on a simplified scoring model. The DMN 
 
 **Improvement.** Move from a static rule-based scoring to **case-specific weighting profiles** (e.g. "cost-driven", "quality-driven", "sustainability-driven"). The DMN could be split into a weighting decision plus a scoring decision, and the weights could be parameterised at process start.
 
-## 3. Missing timeout and escalation for supplier responses
+### 3. Webhook-Based Make.com Triggers
+
+The current Make.com scenarios are based on polling triggers. This means that Make.com checks regularly whether new Google Form responses or data entries are available. Although this works for the demonstrator, it is not fully event-driven and may create unnecessary scenario executions.
+
+**Improvement.** A future improvement would be to replace polling-based triggers with webhook-based triggers. With webhooks, Make.com would only start when a new event actually occurs, for example when a new material request is submitted or when a supplier sends an RFQ response.
+
+## 4. Missing timeout and escalation for supplier responses
 
 The current workflow assumes that all contacted suppliers submit a response. The process counts received responses and compares them with the expected number. However, if one supplier does not answer, the process may remain open and wait indefinitely. In practice, suppliers may answer late, forget to respond, or decline to participate.
 
 **Improvement.** Add **timer events and escalation paths** to the BPMN model. The workflow could send an automatic reminder after a defined number of days. If no response is received after the final deadline, the process could continue with the available responses or escalate to a procurement employee — making the workflow robust against stuck process instances.
 
-## 4. Risk of duplicate or incorrect supplier responses
+## 5. Risk of duplicate or incorrect supplier responses
 
 The current response handling counts incoming supplier responses and stores values based on supplier number. This works for the demonstrator but does not fully prevent duplicate responses: if a supplier submits the form twice, the response counter increases twice. Incorrect supplier numbers or process instance IDs could also lead to wrong mappings.
 
 **Improvement.** Introduce **unique response tokens per supplier**. Each RFQ email would contain a supplier-specific link with a unique token. When a supplier submits a response, the workflow checks whether this supplier has already responded — and either rejects the duplicate or updates the existing record without re-incrementing the counter. This improves data consistency and reduces process errors.
 
-## 5. Limited error handling for external service integration
+## 6. Limited error handling for external service integration
 
 The workflow depends on external services such as Make.com for sending RFQ emails and generating contract drafts. This demonstrates service integration well, but the current BPMN has limited error handling for technical failures — a Make.com webhook could be unavailable, a payload malformed, or a response incomplete.
 
 **Improvement.** Model **technical error handling directly in BPMN**. Service tasks would include retry mechanisms, boundary error events, and fallback paths. If an external service fails after several retries, the workflow could create a manual correction task for procurement — making the process production-ready.
 
-## 6. No negotiation loop included
+## 7. No negotiation loop included
 
 The current workflow evaluates supplier responses and selects the best supplier. It does not include a structured negotiation loop. In real procurement, the first offer is rarely the final offer — teams typically negotiate price, delivery time, payment terms, warranty, or technical specifications before deciding.
 
 **Improvement.** Add a **negotiation sub-process** before the final supplier selection. After reviewing responses, procurement could decide whether negotiation is required. If yes, the workflow would send negotiation requests to selected suppliers, wait for updated offers, and re-evaluate them through the DMN — aligning the process with realistic procurement practice.
 
-## 7. Implicit tie-breaking in best-supplier selection
+## 8. Implicit tie-breaking in best-supplier selection
 
 The current best-supplier selection may include implicit tie-breaking. If two or more suppliers achieve the same score, the `FIRST` hit policy of the DMN automatically picks the first matching supplier. This works technically but is not transparent: a procurement employee may not understand why one supplier was preferred when both scored identically.
 
 **Improvement.** Define **explicit tie-breaking rules** in the DMN. For example: if scores are equal, compare compliance level first, then delivery time, then price. If there is still no clear winner, route to a manual review task — making the selection logic transparent and easy to justify.
 
-## 8. Limited process monitoring and reporting
+## 9. Limited process monitoring and reporting
 
 The current workflow focuses on executing the procurement process. It does not yet provide advanced monitoring or reporting. Procurement managers cannot easily see how many RFQs are open, which suppliers have not responded, which cases are delayed, or how long each step takes.
 
 **Improvement.** Add **monitoring dashboards** showing open process instances, average response times, supplier participation rates, decision outcomes, and bottlenecks. This helps procurement managers control the process and identify opportunities for continuous improvement.
 
-## 9. Digital signature integration is missing
+## 10. Digital signature integration is missing
 
 The contract signing step is not yet fully digitalised. The workflow generates and reviews a contract draft, but the final signature is handled manually outside the process. This creates a media break — the contract may need to be downloaded, printed, signed, scanned, and exchanged by email.
 
