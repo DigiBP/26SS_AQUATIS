@@ -126,26 +126,35 @@ The Make.com scenarios use polling-based triggers for Google Form responses. Thi
 
 ```
 /
-├── BPMN/                          BPMN process models
-│   ├── AS-IS_S2O.bpmn             Current manual Source-to-Order process
-│   ├── TO-BE_S2O.bpmn             Redesigned digital process (full S2O)
-│   └── Weiterentwicklung-Automation_2.bpmn   Executable Camunda 7 sub-process
-├── DMN/                           Decision models
-│   ├── Evaluate-supplier-response_1.dmn      Scores a single supplier (5 inputs → score)
-│   └── DMN-Best-Supplier_1.dmn               Selects best supplier from scores
-├── Forms/                         Camunda user task forms (.form)
-│   ├── customer-request-catalogue_1.form     Customer request + catalogue check
-│   ├── alternative_procurement-request_1.form Alternative product proposal
-│   ├── feasbible_RFQ-list.form             Feasibility check + RFQ contact list
-│   ├── Review-Supplier_1.form                Review supplier responses
-│   └── Review_Contract_Draft_1.form          Review contract draft
-├── Make/                          Make.com integration screenshots
-│   ├── 1-Trigger_Integration_Google-Forms_HTTP.png
-│   ├── 2-Send_RFQ.png
-│   ├── 3-Supplier_Response.png
-│   └── 4-Generate_contract-draft.png
-├── Process_Automation_Methodology.md   Our 8-step methodology
-└── README.md                      This file
+├── BPMN/                                   BPMN process models
+│   ├── AS-IS_S2O.bpmn                      Current manual Source-to-Order process
+│   ├── TO-BE_S2O.bpmn                      Conceptual digital TO-BE process
+│   └── Weiterentwicklung-Automation_2.bpmn Executable Camunda 7 supplier-selection prototype
+├── DMN/                                    DMN decision models
+│   ├── Evaluate-supplier-response 1.dmn    Scores individual supplier responses
+│   └── DMN-Best-Supplier 1.dmn             Selects the best supplier based on supplier scores
+├── Forms/                                  Camunda forms and form documentation
+│   ├── customer-request-catalogue 1.form   Sales task: customer request and catalogue check
+│   ├── alternative_procurement-request 1.form Sales task: alternative product proposal
+│   ├── feasbible_RFQ-list.form             Procurement task: feasibility check and RFQ contact list
+│   ├── Review-Supplier 1.form              Procurement task: review supplier responses
+│   ├── Review_Contract_Draft 1.form        Procurement task: review generated contract draft
+│   ├── Form-Customer-Request-Catalogue.png Screenshot of the customer request Camunda form
+│   ├── Form-Alternative-proc-Request.png   Screenshot of the alternative procurement form
+│   ├── Form-Feasible-RFQ-List.png          Screenshot of the RFQ contact list form
+│   ├── Form-Review-Supplier.png            Screenshot of the supplier review form
+│   ├── HTTP-Form-Review-Contract-Draft.png Screenshot of the contract draft review form
+│   ├── Google-Form-New-Material-Request.pdf Documentation of the external customer request form
+│   └── Google-Form-RFQ-Response.pdf        Documentation of the external supplier response form
+├── Make/                                   Make.com integration documentation
+│   ├── 1-Trigger_Integration_Google-Forms_HTTP.png Starts the Camunda process from Google Forms
+│   ├── 2-Send_RFQ.png                      Sends RFQ emails to suppliers
+│   ├── 3-Supplier_Response.png             Receives supplier responses and correlates them to Camunda
+│   └── 4-Generate_contract-draft.png       Generates the contract draft via Google Docs template
+├── Templates/                              Contract-generation templates
+│   └── Template_Supplier_Agreement.pdf     Supplier agreement template used for automated contract draft generation
+├── AS-IS Process Description: Supplier Selection Additional AS-IS process description
+└── README.md                               Main project documentation
 ```
 
 [⬆️ Back to Top](#table-of-contents)
