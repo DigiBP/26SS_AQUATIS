@@ -12,6 +12,7 @@
 
 - [Project Members](#project-members)
 - [Abstract & Project Overview](#abstract-project-overview)
+- [Process Automation Methodology](#process-automation-methodology)
 - [Repository Structure](#repository-structure)
 - [AS-IS Process](#as-is-process)
   - [Process Description](#process-description)
@@ -72,6 +73,62 @@ The core innovation lies in the **automated supplier selection** step: incoming 
 
 [⬆️ Back to Top](#table-of-contents)
 
+---
+ 
+# Process Automation Methodology
+ 
+This project follows a process-driven automation methodology designed to digitalise the Source-to-Order process using low-code tools, APIs, and workflow orchestration. The methodology is practical and implementation-focused, guiding the project from process analysis to end-to-end testing.
+ 
+## 1. AS-IS Process Analysis
+ 
+The first step is to understand the current Source-to-Order process. The existing workflow is analysed to identify how sourcing requests are initiated, processed, and handled by sales, procurement, and master data. Key issues such as manual handovers, missing information, and the risk of missed opportunities are identified.
+ 
+## 2. TO-BE Process Design
+ 
+Based on the AS-IS analysis, a target (TO-BE) process is defined. The new process shifts the trigger from manual customer contact to a structured, digital self-service request. The redesigned flow ensures that all required information is captured upfront and that responsibilities are clearly assigned to each stakeholder.
+ 
+## 3. Process Modelling with BPMN
+ 
+The TO-BE process is modelled using Camunda and BPMN standards. This step defines:
+ 
+- Process flow and decision points
+- User tasks for sales, procurement, and master data
+- System interactions and process boundaries
+The model serves as the central reference for the automated workflow.
+ 
+## 4. Data Collection and Stakeholder Interaction
+ 
+Google Forms is used as the main entry point for customer sourcing requests. The form ensures standardised data collection and acts as the initial communication channel between the customer and internal stakeholders.
+ 
+## 5. Integration and Automation
+ 
+Make is used to automate data movement and system integration through APIs. This includes:
+ 
+- Sending form data into the CRM
+- Triggering the Camunda process
+- Updating CRM and ERP data stores
+APIs are tested and validated using Postman before being integrated into the automated flow.
+ 
+## 6. System Simulation (CRM & ERP)
+ 
+To avoid dependency on real enterprise systems, Google Sheets are used to simulate CRM and ERP systems. These sheets act as a fake database containing materials, suppliers, and sourcing requests, enabling realistic process execution and data handling.
+ 
+## 7. Workflow Execution and Monitoring
+ 
+Camunda Cockpit is used to run, monitor, and manage process instances. User tasks are assigned, executed, and tracked, allowing validation of the workflow logic and stakeholder interactions.
+ 
+## 8. End-to-End Testing and Validation
+ 
+The final step validates the complete Source-to-Order flow:
+ 
+- Customer submits a request
+- Data is processed via APIs
+- Tasks are executed by stakeholders
+- CRM and ERP records are updated
+This confirms that the automated process works as intended and delivers a more reliable and efficient sourcing experience.
+ 
+[⬆️ Back to Top](#table-of-contents)
+ 
 ---
 
 ## How to Run the Process
