@@ -277,11 +277,11 @@ Camunda fires a webhook to Make.com, which uses **Google Docs** to render a cont
 
 > 🖼️ See [`Make/4-Generate_contract-draft.png`](Make/4-Generate_contract-draft.png) — Webhook → Google Docs (create from template) → HTTP back to Camunda.
 
-### 12. Contract Review & Negotiation Loop
-The draft is reviewed via [`Forms/Review_Contract_Draft_1.form`](Forms/Review_Contract_Draft_1.form). If the supplier rejects T&Cs, the process loops back to update the contract and resend. If negotiation fails after a defined number of rounds, the next-ranked supplier is selected automatically. Timer-based reminders enforce SLAs.
+### 12. Contract Review 
+The generated contract draft is reviewed via [`Forms/Review_Contract_Draft 1.form`](Forms/Review_Contract_Draft%201.form). Procurement can check the generated contract draft and decide whether it is acceptable. In the current Process, this step represents the manual review before finalisation.
 
-### 13. Purchase Order & Process Closure
-Once the contract is signed and archived, a **Purchase Order** is generated and sent to the supplier. The order confirmation is received, all artefacts are archived, and the case is closed.
+### 13. Process Closure
+After the contract draft has been reviewed, the Process reaches its final review stage. Due to our company's internal policies, signatures must currently still be provided manually. Therefore, the pre-filled contract can be downloaded and reused.
 
 ## Challenges Addressed by the TO-BE Process
 
@@ -400,9 +400,10 @@ The executable BPMN model ([`Weiterentwicklung-Automation_2.bpmn`](BPMN/Weiteren
 
 ### Configuration
 - **Engine REST base URL:** `https://digibp.engine.martinlab.science/engine-rest`
-- **Tenant ID:** *`[to be confirmed for team Aquatis]`*
-- **Process Key:** *`[as defined in BPMN]`*
-- **Authentication:** *`[username/password configured per team]`*
+- **Camunda Tasklist:** [`Open DigiBP Camunda Tasklist`](https://digibp.engine.martinlab.science/camunda/app/tasklist/default/#/login)
+- **Tenant ID:** `26DIGIBP34`
+- **Process Key:** `supplier_request_process`
+- **Authentication:** FHNW DigiBP Camunda credentials are required
 
 ### Key BPMN constructs used
 
